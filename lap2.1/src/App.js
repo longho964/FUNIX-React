@@ -11,6 +11,7 @@ class App extends Component {
         <Navbar dark color="primary">
           <div className="container">
             <NavbarBrand href="/">Ristorante con fusion</NavbarBrand>
+            <h1>React Learning </h1>
           </div>
         </Navbar>
       </div>
