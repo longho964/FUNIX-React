@@ -1,38 +1,49 @@
-.App {
+.application {
+  background-color: rgb(12, 206, 235);
+  padding: 10px;
+  color: bisque;
+  text-align: center;
+  border-radius: 5px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 33.33% 33% 33%;
+}
+.container {
+  margin: 20px 10%;
+}
+.liInfor {
+  list-style-type: none;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgb(128, 197, 186);
+  margin: 5px;
+  padding: 5px;
+}
+.liInfor :hover {
+  background-color: rgb(61, 111, 124);
+  cursor: pointer;
+}
+.infor {
+  background-color: whitesmoke;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.infor-body {
+  background-color: bisque;
+  padding: 10px 100px;
+  border-radius: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 992px) {
+  .row {
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (max-width: 600px) {
+  .row {
+    display: block;
   }
 }
