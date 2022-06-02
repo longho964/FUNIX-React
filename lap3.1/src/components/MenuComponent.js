@@ -20,7 +20,7 @@ class Menu extends Component {
     this.setState({ selectedDish: dish });
   }
 
-  rednerDish(dish) {
+  renderDish(dish) {
     if (dish != null)
       return (
         <Card>
@@ -31,7 +31,7 @@ class Menu extends Component {
           </CardBody>
         </Card>
       );
-    else return <></>;
+    else return <div></div>;
   }
 
   render() {
@@ -51,7 +51,7 @@ class Menu extends Component {
     return (
       <div className="container">
         <div className="row">{menu} </div>
-        <div className="col-12">{this.rednerDish(this.state.selectedDish)}</div>
+        <div className="col-12">{this.renderDish(this.state.selectedDish)}</div>
       </div>
     );
   }

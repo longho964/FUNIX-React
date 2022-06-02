@@ -21,7 +21,7 @@ class App extends Component {
             <h1>React Learning </h1>
           </div>
         </Navbar>
-        <Menu dishes={this.state.dishes} />
+        <Menu dishes={this.state.dishes} />{" "}
       </div>
     );
   }
