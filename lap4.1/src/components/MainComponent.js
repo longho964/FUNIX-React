@@ -8,13 +8,13 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      disher: DISHES,
+      dishes: DISHES,
       SelectedDish: null,
     };
   }
 
   onDishSelect(dishId) {
-    this.setState({ selectedDish: dishID });
+    this.setState({ selectedDish: dishId });
   }
   render() {
     return (
