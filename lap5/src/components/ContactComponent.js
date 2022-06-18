@@ -1,6 +1,7 @@
 import React from "react";
 
 function Contact(props) {
+  console.log("this is contact page");
   return (
     <div className="container">
       <div className="row row-content">

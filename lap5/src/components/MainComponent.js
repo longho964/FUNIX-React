@@ -6,7 +6,7 @@ import { DISHES } from "../shared/dishes";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Home from "./HomeComponent";
-import { Switch, Router, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Contact from "./ContactComponent";
 import { COMMENTS } from "../shared/comments";
 import { PROMOTIONS } from "../shared/promotions";
@@ -37,13 +37,17 @@ class Main extends Component {
       <div>
         <Header />
         <Switch>
-          <Router path="/home" Component={HomePage} />
-          <Router
-            exact
-            path="/menu"
-            Component={() => <Menu dishes={this.state.dishes} />}
-          />
-          <Router exact path="/contactus" Component={Contact} />
+          <Route exact path="/home">
+            <HomePage />
+          </Route>
+
+          <Route exact path="/menu">
+            <Menu dishes={this.state.dishes} />
+          </Route>
+
+          <Route exact path="/contactus">
+            <Contact />
+          </Route>
         </Switch>
         <Footer />
       </div>

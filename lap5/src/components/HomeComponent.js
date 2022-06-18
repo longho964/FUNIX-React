@@ -9,6 +9,8 @@ import {
 } from "reactstrap";
 
 function Home(props) {
+  console.log("this is home page");
+
   return (
     <div className="container">
       <div className="row align-items-start">
