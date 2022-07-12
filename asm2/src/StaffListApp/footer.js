@@ -5,18 +5,18 @@ function Footer(props) {
   return (
     <div className="footer">
       <div className="container">
-        <div className="row justify-content-center">
+        <div className="row1 justify-content-center">
           <div className="col-4 offset-1 col-sm-2">
             <h5>Links</h5>
             <ul className="list-unstyled">
               <li>
-                <Link to="/a">Nhân Viên</Link>
+                <Link to="/nhanvien">Nhân Viên</Link>
               </li>
               <li>
-                <Link to="/b">Phòng Ban</Link>
+                <Link to="phongban">Phòng Ban</Link>
               </li>
               <li>
-                <Link to="/c">Bảng Lương</Link>
+                <Link to="/bangluong">Bảng Lương</Link>
               </li>
             </ul>
           </div>

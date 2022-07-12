@@ -29,28 +29,28 @@ class Header extends Component {
     return (
       <div>
         <Navbar dark expand="md">
-          <div className="container">
-            <NavbarToggler onClick={this.toggleNav} />
+          <div className="container nav">
+            <NavbarBrand onClick={this.toggleNav} />
             <NavbarBrand className="mr-auto" href="/">
-              <img src="/funix-logo.png" alt="funix-logo" />
+              <img className="nav" src="/funix-logo.png" alt="funix-logo" />
             </NavbarBrand>
 
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
-                <NavItem>
-                  <NavLink className="nav-link" to="/a">
+                <NavItem className="nav">
+                  <NavLink className="nav-link" to="/nhanvien">
                     <span className="fa fa-home fa-lg"></span> Nhân Viên
                   </NavLink>
                 </NavItem>
 
-                <NavItem>
-                  <Link className="nav-link" to="/b">
+                <NavItem className="nav">
+                  <Link className="nav-link" to="/phongban">
                     <span className="fa fa-info fa-lg"></span> phòng Ban
                   </Link>
                 </NavItem>
 
-                <NavItem>
-                  <NavLink className="nav-link" to="/c">
+                <NavItem className="nav">
+                  <NavLink className="nav-link" to="/bangluong">
                     <span className="fa fa-list fa-lg"></span> Bảng Lương
                   </NavLink>
                 </NavItem>

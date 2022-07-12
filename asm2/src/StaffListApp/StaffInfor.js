@@ -1,51 +1,52 @@
-import { STAFFS } from "./staffs";
-import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import React from "react";
+import { Card, CardImg } from "reactstrap";
 
-import { Link } from "react-router-dom";
+function RenderAvata({ staff }) {
+  console.log("1111");
+  return (
+    <div className="col-12 col-md-5 m-1">
+      <Card>
+        <CardImg top src={staff.image} alt={staff.name}></CardImg>
+      </Card>
+    </div>
+  );
+}
 
-class StaffInfor extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      STAFFS,
-      choosenStaff: null,
-    };
-  }
-
-  showInfo(item) {
-    this.setState({ choosenStaff: item });
-  }
-
-  render() {
-    console.log("da vao day roi");
+function RenderStaffInfor({ choosenStaff }) {
+  if (choosenStaff != null)
     return (
       <div className="container">
-        <h1 className="application"> NHÂN VIÊN </h1>
-
-        <div className="infor">
-          <h1> Thông tin chi tiết nhân viên</h1>{" "}
-        </div>
-
         <div className="infor-body">
           {" "}
-          {this.state.choosenStaff !== null && (
-            <div key={this.state.choosenStaff.id} className="containerinfor">
-              <h5> Họ và tên: {this.state.choosenStaff.name}</h5>
-              <p> Ngày sinh : {this.state.choosenStaff.doB}</p>
-              <p> Ngày vào công ty:{this.state.choosenStaff.startDate}</p>
-              <p> Phòng ban: {this.state.choosenStaff.department.name}</p>
-              <p>
-                {" "}
-                Số ngày nghỉ còn lại: {this.state.choosenStaff.annualLeave}
-              </p>
-              <p> số ngày làm thêm: {this.state.choosenStaff.overTime}</p>
+          {choosenStaff !== null && (
+            <div key={choosenStaff.id} className="containerinfor">
+              <h5> Họ và tên: {choosenStaff.name}</h5>
+              <p> Ngày sinh : {choosenStaff.doB}</p>
+              <p> Ngày vào công ty:{choosenStaff.startDate}</p>
+              <p> Phòng ban: {choosenStaff.department.name}</p>
+              <p> Số ngày nghỉ còn lại: {choosenStaff.annualLeave}</p>
+              <p> số ngày làm thêm: {choosenStaff.overTime}</p>
             </div>
           )}
         </div>
       </div>
     );
-  }
+  else return <div></div>;
 }
+
+const StaffInfor = (props) => {
+  if (props.staff != null)
+    return (
+      <div className="row1">
+        <div className="col-12 col-md-5 m-1">
+          <RenderAvata staff={props.staff} />
+        </div>
+        <div className="col-12 col-md-5 m-1">
+          <RenderStaffInfor choosenStaff={props.staff} />
+        </div>
+      </div>
+    );
+  else return <div></div>;
+};
 
 export default StaffInfor;

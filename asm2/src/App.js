@@ -8,6 +8,7 @@ function App() {
     <Router>
       <div className="App">
         <StaffList />
+        <StaffInfor />
       </div>
     </Router>
   );

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Media } from "reactstrap";
 import { STAFFS } from "./staffs";
 import "../App";
-import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import dateFormat from "dateformat";
-import { Switch } from "react-router";
+import { Route, Routes, useParams } from "react-router-dom";
+
 import Header from "./header";
 import Footer from "./footer";
 import StaffInfor from "./StaffInfor";
+import Departments from "./department";
+import Payroll from "./payroll";
+import Liststaff from "./staffList";
 
 class StaffList extends Component {
   constructor(props) {
@@ -25,21 +25,36 @@ class StaffList extends Component {
 
   render() {
     console.log("this.state.STAFFS", this.state.STAFFS);
-    const menu = this.state.STAFFS.map((item) => {
+
+    // const staffcompany = this.state.STAFFS.map((item) => {
+    //   return (
+    //     <div key={item.id} className="liInfor">
+    //       <Media tag="li" onClick={() => this.showInfo(item)}>
+    //         {" "}
+    //         <Link exact to={`/nhanvien/${item.id} `}>
+    //           <Media body className="ml-5">
+    //             <img src={item.image}></img>
+    //             <Media heading>{item.name}</Media>
+    //           </Media>{" "}
+    //         </Link>
+    //       </Media>
+    //     </div>
+    //   );
+    // });
+
+    const StaffDetail = (props) => {
+      let { idNhanVien } = useParams();
+      console.log("id nhan vien:", idNhanVien);
       return (
-        <div key={item.id} className="liInfor">
-          <Media tag="li" onClick={() => this.showInfo(item)}>
-            {" "}
-            <Link to="/staffInfor">
-              <Media body className="ml-5">
-                <img src={item.image}></img>
-                <Media heading>{item.name}</Media>
-              </Media>{" "}
-            </Link>
-          </Media>
-        </div>
+        <StaffInfor
+          staff={
+            this.state.STAFFS.filter(
+              (staff) => staff.id === parseInt(idNhanVien, 10)
+            )[0]
+          }
+        />
       );
-    });
+    };
 
     return (
       <div className="container">
@@ -47,16 +62,18 @@ class StaffList extends Component {
         <Header />
 
         <Routes>
-          <Route exact path="/a" element={<StaffList />} />
-          <Route exact path="/b" element={<StaffInfor />} />
-          <Route exact path="/c" element={<StaffList />} />
+          <Route exact path="/nhanvien" element={<Liststaff />} />
+          <Route path="/nhanvien/:idNhanVien" element={<StaffDetail />} />
+
+          <Route exact path="/phongban" element={<Departments />} />
+          <Route exact path="/bangluong/*" element={<Payroll />} />
         </Routes>
 
-        <div>
+        {/* <div>
           <Media list className="row">
-            {menu}
+            {staffcompany}
           </Media>
-        </div>
+        </div> */}
         <Footer />
       </div>
     );

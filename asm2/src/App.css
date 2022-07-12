@@ -7,7 +7,7 @@
 }
 .row {
   display: grid;
-  grid-template-columns: 33.33% 33% 33%;
+  grid-template-columns: 16% 16% 16% 16% 16% 16%;
 }
 .container {
   margin: 20px 10%;
@@ -35,15 +35,24 @@
   border-radius: 5px;
 }
 
+.nav {
+  display: inline-flex;
+  margin: 10px;
+}
+.fa {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 992px) {
   .row {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33% 33% 33%;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 660px) {
   .row {
-    display: block;
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 }
