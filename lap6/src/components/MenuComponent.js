@@ -27,7 +27,7 @@ function RenderMenuItem({ dish, onClick }) {
 const Menu = (props) => {
   const menu = props.dishes.map((dish) => {
     return (
-      <div className="col-12" key={dish.id}>
+      <div className="col-12 image-size" key={dish.id}>
         <RenderMenuItem dish={dish} onClick={props.onClick} />
       </div>
     );

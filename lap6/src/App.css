@@ -28,14 +28,16 @@
   color: #61dafb;
 }
 
-.col-12 {
-  max-width: 60%;
+.image-size {
+  width: 40% !important;
 }
 .row {
   display: grid;
   grid-template-columns: 50% 50%;
 }
-
+/* .row > * {
+  max-width: 40% !important;
+} */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
