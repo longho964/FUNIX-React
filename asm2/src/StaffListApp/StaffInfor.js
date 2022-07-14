@@ -6,7 +6,11 @@ function RenderAvata({ staff }) {
   return (
     <div className="col-12 col-md-5 m-1">
       <Card>
-        <CardImg top src={staff.image} alt={staff.name}></CardImg>
+        <CardImg
+          className="staffinfor-image"
+          src={staff.image}
+          alt={staff.name}
+        ></CardImg>
       </Card>
     </div>
   );
@@ -21,8 +25,15 @@ function RenderStaffInfor({ choosenStaff }) {
           {choosenStaff !== null && (
             <div key={choosenStaff.id} className="containerinfor">
               <h5> Họ và tên: {choosenStaff.name}</h5>
-              <p> Ngày sinh : {choosenStaff.doB}</p>
-              <p> Ngày vào công ty:{choosenStaff.startDate}</p>
+              <p>
+                {" "}
+                Ngày sinh : {new Date(choosenStaff.doB).toLocaleDateString()}
+              </p>
+              <p>
+                {" "}
+                Ngày vào công ty:
+                {new Date(choosenStaff.startDate).toLocaleDateString()}
+              </p>
               <p> Phòng ban: {choosenStaff.department.name}</p>
               <p> Số ngày nghỉ còn lại: {choosenStaff.annualLeave}</p>
               <p> số ngày làm thêm: {choosenStaff.overTime}</p>
@@ -37,7 +48,7 @@ function RenderStaffInfor({ choosenStaff }) {
 const StaffInfor = (props) => {
   if (props.staff != null)
     return (
-      <div className="row1">
+      <div className="row-staffinfor">
         <div className="col-12 col-md-5 m-1">
           <RenderAvata staff={props.staff} />
         </div>

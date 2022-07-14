@@ -9,8 +9,9 @@ import StaffInfor from "./StaffInfor";
 import Departments from "./department";
 import Payroll from "./payroll";
 import Liststaff from "./staffList";
+import Introduction from "./introduction";
 
-class StaffList extends Component {
+class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,22 +26,6 @@ class StaffList extends Component {
 
   render() {
     console.log("this.state.STAFFS", this.state.STAFFS);
-
-    // const staffcompany = this.state.STAFFS.map((item) => {
-    //   return (
-    //     <div key={item.id} className="liInfor">
-    //       <Media tag="li" onClick={() => this.showInfo(item)}>
-    //         {" "}
-    //         <Link exact to={`/nhanvien/${item.id} `}>
-    //           <Media body className="ml-5">
-    //             <img src={item.image}></img>
-    //             <Media heading>{item.name}</Media>
-    //           </Media>{" "}
-    //         </Link>
-    //       </Media>
-    //     </div>
-    //   );
-    // });
 
     const StaffDetail = (props) => {
       let { idNhanVien } = useParams();
@@ -60,8 +45,8 @@ class StaffList extends Component {
       <div className="container">
         <h1 className="application"> FUNIX REACT COMPANY</h1>
         <Header />
-
         <Routes>
+          <Route exact path="/" element={<Introduction />} />
           <Route exact path="/nhanvien" element={<Liststaff />} />
           <Route path="/nhanvien/:idNhanVien" element={<StaffDetail />} />
 
@@ -69,15 +54,10 @@ class StaffList extends Component {
           <Route exact path="/bangluong/*" element={<Payroll />} />
         </Routes>
 
-        {/* <div>
-          <Media list className="row">
-            {staffcompany}
-          </Media>
-        </div> */}
         <Footer />
       </div>
     );
   }
 }
 
-export default StaffList;
+export default Layout;
