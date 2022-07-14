@@ -5,6 +5,7 @@ import {
   BreadcrumbItem,
   Form,
   FormGroup,
+  FormFeedback,
   Label,
   Input,
   Col,
@@ -22,11 +23,19 @@ class Contact extends Component {
       agree: false,
       contactType: "tel.",
       message: "",
+      touched: {
+        firstname: false,
+        lastname: false,
+        telnum: false,
+        email: false,
+      },
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.handleInputChange = this.handleInputChange.bind(this);
+
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   handleInputChange(event) {
@@ -45,8 +54,50 @@ class Contact extends Component {
     event.preventDefault();
   }
 
+  handleBlur = (field) => (evt) => {
+    this.setState({
+      touched: { ...this.state.touched, [field]: true },
+    });
+  };
+
+  validate(firstname, lastname, telnum, email) {
+    const errors = {
+      firstname: "",
+      lastname: "",
+      telnum: "",
+      email: "",
+    };
+    if (this.state.touched.firstname && firstname.length < 4)
+      errors.firstname = "First name should be >3 chareter";
+    else if (this.state.touched.firstname && firstname.length > 10)
+      errors.firstname = "First name should be <=10";
+
+    if (this.state.touched.lastname && lastname.length < 1)
+      errors.lastname = "Last name should be >3 chareter";
+    else if (this.state.touched.lastname && lastname.length > 10)
+      errors.lastname = "Last name should be <=10";
+
+    const regTel = /^\d+$/; //bieu thuc chinh quy -> kiem tra tinh hop la cua chuoi
+    if (this.state.touched.telnum && !regTel.test(telnum))
+      errors.telnum = "Tel number only number pls ";
+
+    if (
+      this.state.touched.email &&
+      email.split("").filter((x) => x === "@").length != 1
+    )
+      errors.email = "Email should contain a @";
+
+    return errors;
+  }
+
   render() {
     console.log("this is contact page");
+    const errors = this.validate(
+      this.state.firstname,
+      this.state.lastname,
+      this.state.telnum,
+      this.state.email
+    );
 
     return (
       <div className="container">
@@ -122,8 +173,12 @@ class Contact extends Component {
                     name="firstname"
                     placeholder="First name"
                     value={this.state.firstname}
+                    onBlur={this.handleBlur("firstname")}
+                    valid={errors.firstname === ""}
+                    invalid={errors.firstname !== ""}
                     onChange={this.handleInputChange}
                   />
+                  <FormFeedback>{errors.firstname}</FormFeedback>
                 </Col>
               </FormGroup>
 
@@ -139,8 +194,12 @@ class Contact extends Component {
                     name="lastname"
                     placeholder="last name"
                     value={this.state.lastname}
+                    onBlur={this.handleBlur("lastname")}
+                    valid={errors.lastname === ""}
+                    invalid={errors.lastname !== ""}
                     onChange={this.handleInputChange}
                   />
+                  <FormFeedback>{errors.lastname}</FormFeedback>
                 </Col>
               </FormGroup>
 
@@ -156,8 +215,12 @@ class Contact extends Component {
                     name="telnum"
                     placeholder="Tel Number"
                     value={this.state.telnum}
+                    onBlur={this.handleBlur("telnum")}
+                    valid={errors.telnum === ""}
+                    invalid={errors.telnum !== ""}
                     onChange={this.handleInputChange}
-                  />
+                  />{" "}
+                  <FormFeedback>{errors.telnum}</FormFeedback>
                 </Col>
               </FormGroup>
 
@@ -173,8 +236,12 @@ class Contact extends Component {
                     name="email"
                     placeholder=" Email"
                     value={this.state.email}
+                    onBlur={this.handleBlur("email")}
+                    valid={errors.email === ""}
+                    invalid={errors.email !== ""}
                     onChange={this.handleInputChange}
-                  />
+                  />{" "}
+                  <FormFeedback>{errors.email}</FormFeedback>
                 </Col>
               </FormGroup>
 
